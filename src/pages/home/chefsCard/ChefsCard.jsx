@@ -8,7 +8,6 @@ const ChefsCard = () => {
         .then(res=>res.json())
         .then(data=>setChefs(data))
     },[])
-    console.log(chefs)
     return (
         <div className='grid grid-cols-3 bg-gradient-to-r from-violet-500 to-indigo-500 gap-8 px-8 py-12'>
             {

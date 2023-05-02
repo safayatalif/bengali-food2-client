@@ -15,12 +15,13 @@ const router = createBrowserRouter([
                 element:<Home></Home>
             },
             {
-                path:'/blog',
+                path:'blog',
                 element:<Blog></Blog>
             },
             {
                 path:':id',
-                element:<ChefDetails></ChefDetails>
+                element:<ChefDetails></ChefDetails>,
+                loader:({params})=>fetch(`https://bengali-food-server-safayatalif.vercel.app/chefs/${params.id}`)
             }
         ]
     }
