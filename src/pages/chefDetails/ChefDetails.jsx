@@ -8,9 +8,9 @@ const ChefDetails = () => {
     console.log(chefDetails)
     const { id, chef_name, likes, years_of_experience, number_of_recipes, chef_picture, recipes, description } = chefDetails;
     return (
-        <div>
-            <div className="bg-gradient-to-r from-violet-500 to-indigo-500 pt-12">
-                <div className="card md:card-side shadow-xl bg-hero bg-cover text-indigo-300 m-4">
+        <div className="bg-gradient-to-r from-violet-500 to-indigo-500 pt-12 px-8">
+            <div >
+                <div className="card md:card-side shadow-xl bg-hero bg-cover text-indigo-300">
                     <figure ><img className='rounded-md mx-12 h-full' src={chef_picture} alt="Movie" /></figure>
                     <div className="card-body">
                         <h2 className="card-title underline">{chef_name}</h2>
@@ -28,7 +28,7 @@ const ChefDetails = () => {
                     </div>
                 </div>
             </div>
-            <div className="">
+            <div className="grid md:grid-cols-3 gap-4 py-12">
                 {
                     recipes.map(recipe=><RecipesCard 
                         key={recipe.id}

@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <div className="navbar bg-gradient-to-r from-violet-500 to-indigo-500 shadow-md px-4">
             <div className="flex-1">
-                <a className="font-bold text-3xl text-indigo-200">Bengali<span className='underline text-orange-500'>.Food</span></a>
+                <a className="font-bold text-3xl text-indigo-200">Bengali<span className='underline text-orange-500 font-extrabold'>.Food</span></a>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end md:hidden">
