@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 
 const Login = () => {
     const { googleSignIn, githubSignIn, signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || '/'
+
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
@@ -34,6 +38,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 form.reset()
+                navigate(from, { replace: true })
                 console.log(user)
                 console.log('done')
             })

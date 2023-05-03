@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHeart , FaLinkedinIn , FaFacebook , FaTwitter , FaVimeoV} from 'react-icons/fa';
+import { FaHeart, FaLinkedinIn, FaFacebook, FaTwitter, FaVimeoV } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -18,6 +18,7 @@ const Footer = () => {
                 <Link className='p-4 rounded-full hover:text-indigo-300'><FaTwitter></FaTwitter></Link>
                 <Link className='p-4 rounded-full hover:text-indigo-300'><FaVimeoV></FaVimeoV></Link>
             </div>
+            <p className='text-base text-center pb-4'>Copyright © 2023 - All right reserved</p>
         </div>
     );
 };

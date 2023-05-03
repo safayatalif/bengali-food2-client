@@ -51,7 +51,8 @@ const AuthProviders = ({ children }) => {
         signIn,
         user,
         logOut,
-        upDateProfile
+        upDateProfile,
+        loading
     }
     console.log(user)
     return (

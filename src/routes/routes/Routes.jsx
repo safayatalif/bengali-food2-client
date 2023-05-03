@@ -6,6 +6,7 @@ import ChefDetails from "../../pages/chefDetails/ChefDetails";
 import ErrorPage from './../../pages/errorPage/ErrorPage';
 import Login from "../../pages/login/Login";
 import Register from "../../pages/register/Register";
+import PrivateRoutes from "../privateRoutes/PrivateRoutes";
 
 
 const router = createBrowserRouter([
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
             },
             {
                 path:':id',
-                element:<ChefDetails></ChefDetails>,
+                element:<PrivateRoutes><ChefDetails></ChefDetails></PrivateRoutes>,
                 loader:({params})=>fetch(`https://bengali-food-server-safayatalif.vercel.app/chefs/${params.id}`)
             },
             {
