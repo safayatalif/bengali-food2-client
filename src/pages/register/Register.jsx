@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProviders';
 
 const Register = () => {
+    const { createUser } = useContext(AuthContext)
+    const handleEmailSignIn = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
     return (
         <div className='bangraoud-color py-12'>
-                        <h1 className="text-5xl font-bold text-center text-indigo-200 pb-6">Please Sing In!</h1>
-            <div className="card-body w-1/3 mx-auto bg-hero rounded-lg py-12">
+            <h1 className="text-5xl font-bold text-center text-indigo-200 pb-6">Please Sing In!</h1>
+            <form onSubmit={handleEmailSignIn} className="card-body w-1/3 mx-auto bg-hero rounded-lg py-12">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text  text-indigo-200">Name</span>
@@ -36,7 +54,7 @@ const Register = () => {
                 <label className="">
                     <span className='text-indigo-200'>Already Have An Account ? <Link to='/login' className=" link text-indigo-200">Login</Link></span>
                 </label>
-            </div>
+            </form>
         </div>
     );
 };

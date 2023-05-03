@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProviders';
 
 const Login = () => {
+    const {googleSignIn , githubSignIn} = useContext(AuthContext);
+    const handleGoogleSignIn =()=>{
+        googleSignIn()
+        .then(result =>{
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+    }
+    const handleGithubSignIn =()=>{
+        githubSignIn()
+        .then(result =>{
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+    }
+
     return (
         <div className='bangraoud-color py-12'>
             <h1 className="text-5xl font-bold text-center text-indigo-200 pb-6">Please Login!</h1>
@@ -26,10 +49,10 @@ const Login = () => {
                     <button className="my-btn">Login</button>
                 </div>
                 <div className="form-control mt-6">
-                    <button className="my-btn"><FaGoogle className='inline-block h-6 w-6 text-indigo-300'></FaGoogle> continue with Google</button>
+                    <button onClick={handleGoogleSignIn} className="my-btn"><FaGoogle className='inline-block h-6 w-6 text-indigo-300'></FaGoogle> continue with Google</button>
                 </div>
                 <div className="form-control mt-6">
-                    <button className="my-btn"><FaGithub className='inline-block h-6 w-6 text-indigo-300'></FaGithub> continue with github</button>
+                    <button onClick={handleGithubSignIn} className="my-btn"><FaGithub className='inline-block h-6 w-6 text-indigo-300'></FaGithub> continue with github</button>
                 </div>
                 <label className="">
                     <span className='text-indigo-200'>Don&apos;t Have An Account ? <Link to='/register' className=" link text-indigo-200">Register</Link></span>
