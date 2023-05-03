@@ -4,32 +4,47 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 
 const Login = () => {
-    const {googleSignIn , githubSignIn} = useContext(AuthContext);
-    const handleGoogleSignIn =()=>{
+    const { googleSignIn, githubSignIn, signIn } = useContext(AuthContext);
+    const handleGoogleSignIn = () => {
         googleSignIn()
-        .then(result =>{
-            const user = result.user;
-            console.log(user)
-        })
-        .catch(error=>{
-            console.log(error)
-        })
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
-    const handleGithubSignIn =()=>{
+    const handleGithubSignIn = () => {
         githubSignIn()
-        .then(result =>{
-            const user = result.user;
-            console.log(user)
-        })
-        .catch(error=>{
-            console.log(error)
-        })
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+    const handelLogIn = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                console.log('done')
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     return (
         <div className='bangraoud-color py-12'>
             <h1 className="text-5xl font-bold text-center text-indigo-200 pb-6">Please Login!</h1>
-            <div className="card-body w-1/3 mx-auto bg-hero rounded-lg py-12">
+            <form onSubmit={handelLogIn} className="card-body w-1/3 mx-auto bg-hero rounded-lg py-12">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text  text-indigo-200">Email</span>
@@ -58,7 +73,7 @@ const Login = () => {
                     <span className='text-indigo-200'>Don&apos;t Have An Account ? <Link to='/register' className=" link text-indigo-200">Register</Link></span>
                 </label>
 
-            </div>
+            </form>
         </div>
     );
 };
