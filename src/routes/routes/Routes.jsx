@@ -6,7 +6,7 @@ import ChefDetails from "../../pages/chefDetails/ChefDetails";
 import ErrorPage from './../../pages/errorPage/ErrorPage';
 import Login from "../../pages/login/Login";
 import Register from "../../pages/register/Register";
-import PrivateRoutes from "../privateRoutes/PrivateRoutes";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 
 const router = createBrowserRouter([
