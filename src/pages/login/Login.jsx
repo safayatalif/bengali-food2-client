@@ -33,6 +33,7 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
+                form.reset()
                 console.log(user)
                 console.log('done')
             })
@@ -44,18 +45,18 @@ const Login = () => {
     return (
         <div className='bangraoud-color py-12'>
             <h1 className="text-5xl font-bold text-center text-indigo-200 pb-6">Please Login!</h1>
-            <form onSubmit={handelLogIn} className="card-body w-1/3 mx-auto bg-hero rounded-lg py-12">
+            <form onSubmit={handelLogIn} className="card-body md:w-1/3 mx-auto bg-hero rounded-lg py-12">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text  text-indigo-200">Email</span>
                     </label>
-                    <input name='email' type="text" placeholder="email" className="input input-bordered" />
+                    <input name='email' required type="text" placeholder="email" className="input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-indigo-200">Password</span>
                     </label>
-                    <input type="password" name='password' placeholder="password" className="input input-bordered" />
+                    <input required type="password" name='password' placeholder="password" className="input input-bordered" />
                     <label className=''>
                         <Link href="#" className="text-indigo-200 link">Forgot password?</Link>
                     </label>

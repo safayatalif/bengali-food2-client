@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProviders';
+import { FaBars } from 'react-icons/fa';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handelLogOut = () => {
+        logOut()
+            .then(() => {
+                console.log('logout')
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
     return (
         <div className="navbar bg-gradient-to-r from-violet-500 to-indigo-500 shadow-md px-4 sticky top-0">
             <div className="flex-1">
@@ -10,9 +22,16 @@ const Header = () => {
             <div className="flex-none">
                 <div className="dropdown dropdown-end md:hidden">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="https://img.freepik.com/free-photo/portrait-smiling-chef-uniform_329181-675.jpg?w=900&t=st=1682988804~exp=1682989404~hmac=ff3235ab1c32078c20b47f91bfa627de8d18f4fa34477eaed59de54ad5b55a77" />
-                        </div>
+                        {
+                            user ?
+                                <div className="w-10 rounded-full">
+                                    <img title={user?.displayName} src={user?.photoURL} />
+                                </div>
+                                :
+                                <div className="w-10 p-3">
+                                    <FaBars></FaBars>
+                                </div>
+                        }
                     </label>
                     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                         <li><NavLink className={({ isActive }) =>
@@ -23,11 +42,18 @@ const Header = () => {
                             isActive ? "text-indigo-300 underline my-3" : "my-3 text-indigo-200"
                         } to='/blog'>Blog</NavLink></li>
                         <li>
-                            <Link to='/login'>
-                                <button className="my-btn">
-                                    Login
-                                </button>
-                            </Link>
+                            {
+                                user ?
+                                    <button onClick={handelLogOut} className="my-btn ml-4">
+                                        LogOut
+                                    </button>
+                                    :
+                                    <Link to='/login'>
+                                        <button className="my-btn ml-4">
+                                            Login
+                                        </button>
+                                    </Link>
+                            }
                         </li>
                     </ul>
                 </div>
@@ -38,16 +64,25 @@ const Header = () => {
                     <NavLink className={({ isActive }) =>
                         isActive ? "text-indigo-300 underline ml-5 text-xl font-bold" : "ml-5 text-xl font-semibold text-indigo-200"
                     } to='/blog'>Blog</NavLink>
-                    <Link to='/login'>
-                        <button className="my-btn ml-4">
-                            Login
-                        </button>
-                    </Link>
-                    <div className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="https://img.freepik.com/free-photo/portrait-smiling-chef-uniform_329181-675.jpg?w=900&t=st=1682988804~exp=1682989404~hmac=ff3235ab1c32078c20b47f91bfa627de8d18f4fa34477eaed59de54ad5b55a77" />
+                    {
+                        user ?
+                            <button onClick={handelLogOut} className="my-btn ml-4">
+                                LogOut
+                            </button>
+                            :
+                            <Link to='/login'>
+                                <button className="my-btn ml-4">
+                                    Login
+                                </button>
+                            </Link>
+                    }
+                    {
+                        user && <div className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img title={user?.displayName} src={user?.photoURL} />
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
