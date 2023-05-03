@@ -2,7 +2,7 @@ import React from 'react';
 
 const FoodCarousel = () => {
     return (
-        <div className='px-8 bangraoud-color h-1/2 py-12 text-indigo-200'>
+        <div className='px-8 bangraoud-color h-1/4 py-12 text-indigo-200'>
             <h1 className='text-4xl text-center font-bold'>Our <span className='text-orange-400 font-extrabold'>Bengali Food</span> Recipes:</h1>
             <p className='text-center py-4 mb-8'>We always want to provide the best value for you and your health, join us to maximize the benefits</p>
             <div className="carousel rounded-box shadow-xl">

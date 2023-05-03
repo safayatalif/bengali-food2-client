@@ -4,7 +4,6 @@ import {ToastContainer, toast } from 'react-toast';
 
 const RecipesCard = ({ recipe }) => {
     const [favorite , setFavorite] = useState(false);
-    console.log(favorite)
     const { cooking_method, food_image, ingredients, rating, recipe_name } = recipe;
     const handleFavorite = () =>{
         setFavorite(!favorite)

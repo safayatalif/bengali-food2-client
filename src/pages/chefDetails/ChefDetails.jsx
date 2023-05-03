@@ -5,7 +5,6 @@ import RecipesCard from '../../components/recipesCard/RecipesCard';
 
 const ChefDetails = () => {
     const chefDetails = useLoaderData()
-    console.log(chefDetails)
     const { id, chef_name, likes, years_of_experience, number_of_recipes, chef_picture, recipes, description } = chefDetails;
     return (
         <div className="bg-gradient-to-r from-violet-500 to-indigo-500 pt-12 px-8">

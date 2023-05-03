@@ -16,7 +16,7 @@ const ChefCard = ({ chef }) => {
                 <p><span className='font-semibold'>Link </span> : {likes} <FaHeart className='inline-block text-orange-600'></FaHeart></p>
                 <div className="card-actions justify-end">
                     <Link to={`${id}`}>
-                        <button className="text-bold text-indigo-200 bg-orange-600 border px-4 py-2 rounded-md shadow-lg hover:bg-violet-500">
+                        <button className="my-btn">
                             View Recipes
                         </button>
                     </Link>

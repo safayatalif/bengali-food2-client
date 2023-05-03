@@ -5,9 +5,9 @@ import { FaPlay } from 'react-icons/fa';
 
 const NavBanner = () => {
     return (
-        <div className='bangraoud-color md:flex py-16'>
-            <div className="md:pr-40 md:ml-24">
-                <Lottie className='md:w-96 w-full' animationData={chefLottie}></Lottie>
+        <div className='bangraoud-color md:grid grid-cols-2 py-16'>
+            <div className="md:pr-20 md:ml-20">
+                <Lottie className='w-full h-96' animationData={chefLottie}></Lottie>
             </div>
             <div className="mx-8 md:mx-2 text-center flex-1 ">
                 <h1 className='text-5xl font-bold text-indigo-200'>Changing <br />
