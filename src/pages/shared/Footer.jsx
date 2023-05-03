@@ -1,33 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaHeart , FaLinkedinIn , FaFacebook , FaTwitter , FaVimeoV} from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <div>
-            <div className='grid grid-cols-3'>
-                <div className="h-96 w-full bg-hero">
-                    <h1>BUY GIFT CARDS ONLINE</h1>
-                    <h4>Provide with our Gift Card to whom you most want and is sure.</h4>
-                    <button className="text-bold text-indigo-200 bg-orange-600 border px-4 py-2 rounded-md shadow-lg hover:bg-violet-500">
-                        Gift Card
-                    </button>
-                </div>
-                <div className="h-96 w-full bg-hero">
-                    <h1>BUY GIFT CARDS ONLINE</h1>
-                    <h4>Provide with our Gift Card to whom you most want and is sure.</h4>
-                    <input type="text" placeholder="Enter Your Email" className="input input-bordered input-primary w-full max-w-xs" />
-                    <button className="text-bold text-indigo-200 bg-orange-600 border px-4 py-2 rounded-md shadow-lg hover:bg-violet-500">
-                        Subscribe
-                    </button>
-                </div>
-                <div className="h-96 w-full bg-hero">
-                    <h1>BUY GIFT CARDS ONLINE</h1>
-                    <h4>Provide with our Gift Card to whom you most want and is sure.</h4>
-                    <button className="text-bold text-indigo-200 bg-orange-600 border px-4 py-2 rounded-md shadow-lg hover:bg-violet-500">
-                        Explore
-                    </button>
-                </div>
+        <div className='bg-hero h-full'>
+            <h1 className='text-center text-indigo-300 pt-12 pb-6 text-7xl font-extrabold'>BENGALI FOOD </h1>
+            <div className='flex gap-5 justify-center text-xl text-indigo-100'>
+                <Link className='hover:text-indigo-300' to="/">Home</Link>
+                <Link className='hover:text-indigo-300' to="/blog">Blog</Link>
+                <Link className='hover:text-indigo-300' to="#about">About Us</Link>
+                <Link className='hover:text-indigo-300' to="#contact">Contact</Link>
             </div>
-
+            <div className='flex gap-5 justify-center text-xl text-indigo-100 py-6'>
+                <Link className='p-4 rounded-full hover:text-indigo-300'><FaLinkedinIn></FaLinkedinIn></Link>
+                <Link className='p-4 rounded-full hover:text-indigo-300'><FaFacebook></FaFacebook></Link>
+                <Link className='p-4 rounded-full hover:text-indigo-300'><FaTwitter></FaTwitter></Link>
+                <Link className='p-4 rounded-full hover:text-indigo-300'><FaVimeoV></FaVimeoV></Link>
+            </div>
         </div>
     );
 };

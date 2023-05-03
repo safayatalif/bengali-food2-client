@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div>
+        <div className='bangraoud-color'>
            this is blog page 
         </div>
     );
