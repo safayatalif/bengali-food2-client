@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { FaHeart, FaStar } from 'react-icons/fa';
-import {ToastContainer, toast } from 'react-toast';
+import { ToastContainer, toast } from 'react-toast';
+import { Rating } from '@smastrom/react-rating'
+
+import '@smastrom/react-rating/style.css'
 
 const RecipesCard = ({ recipe }) => {
-    const [favorite , setFavorite] = useState(false);
+    const [favorite, setFavorite] = useState(false);
     const { cooking_method, food_image, ingredients, rating, recipe_name } = recipe;
-    const handleFavorite = () =>{
+    const handleFavorite = () => {
         setFavorite(!favorite)
         toast("Add to Favorite successfully!")
     }
@@ -28,15 +31,23 @@ const RecipesCard = ({ recipe }) => {
                                 <li>etc ..</li>
                             </ul>
                         </div>
-                        <div className='flex'>
-                            <p><span className='font-semibold'>Rating:</span> {rating} <FaStar className='inline-block text-orange-400'></FaStar></p>
+                        <div className='flex justify-between'>
+                            <div className=''><span className='font-semibold'> Rating: </span>
+                                {rating}
+                                <Rating
+                                    className=''
+                                    style={{ maxWidth: 150 }}
+                                    value={Rating}
+                                    readOnly
+                                />
+                            </div>
                             <button onClick={handleFavorite} disabled={favorite} className={favorite ? "text-orange-500" : ""}><FaHeart className='h-8 w-8'></FaHeart></button>
                         </div>
                     </div>
                 </div>
                 <figure><img src={food_image} alt="Shoes" /></figure>
             </div>
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     );
 };
