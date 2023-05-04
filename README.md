@@ -1,7 +1,7 @@
 # b7a10-chef-recipe-hunter-client-side-safayatalif
 
 # Live Website Link : 
-  [ItCareer Live Link](https://bengali-food-b637e.web.app/)
+  [Bengali Food Live Link](https://bengali-food-b637e.web.app/)
 #
 # features of my project. 
 * You will find chefs easily . 
