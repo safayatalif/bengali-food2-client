@@ -43,8 +43,8 @@ const AuthProviders = ({ children }) => {
     const logOut = () => {
         return signOut(auth)
     }
-    const upDateProfile = (name, photoURL) => {
-        return updateProfile(auth.currentUser, { displayName: name, photoURL: photoURL })
+    const upDateProfile = (name, photoURL , user) => {
+        return updateProfile(user , { displayName: name, photoURL: photoURL })
     }
     const authInfo = {
         googleSignIn,
@@ -58,7 +58,8 @@ const AuthProviders = ({ children }) => {
         setError,
         error,
         isLoading,
-        setIsLoading
+        setIsLoading ,
+        setUser
 
     }
     return (

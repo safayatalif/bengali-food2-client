@@ -4,7 +4,7 @@ import { AuthContext } from '../../Providers/AuthProviders';
 import { FaExclamationTriangle } from 'react-icons/fa';
 
 const Register = () => {
-    const { createUser, upDateProfile, setError, error } = useContext(AuthContext)
+    const { createUser, setError, error, upDateProfile  , logOut} = useContext(AuthContext)
     const handleEmailSignIn = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -15,26 +15,27 @@ const Register = () => {
         if (!/^.{6,}$/.test(password)) {
             return setError('password is less than 6 characters')
         }
-        if (!password , !email){
+        if (!password, !email) {
             return setError('cannot submit empty email and password')
         }
         else {
             createUser(email, password)
                 .then(result => {
                     const user = result.user;
-                    form.reset();
+                    upDateProfile(name, photoURL, user)
+                        .then((result2)=>{
+                            const user = result2.userImpl;
+                            setError('')
+                        })
+                        .catch(error2 => {
+                            
+                        })
                     setError('');
-                })
-                .catch(error => {
-                    setError(error.message)
-                })
-            upDateProfile(name, photoURL)
-                .then(result => {
-                    const user = result.user;
                     form.reset();
+                    logOut()
+
                 })
                 .catch(error => {
-                    console.log(error)
                     setError(error.message)
                 })
         }
@@ -59,7 +60,7 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text  text-indigo-200">Email</span>
                     </label>
-                    <input name='email'  type="text" placeholder="email" className="input input-bordered" />
+                    <input name='email' type="text" placeholder="email" className="input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label className="label">
