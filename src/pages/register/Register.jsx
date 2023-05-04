@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 import { FaExclamationTriangle } from 'react-icons/fa';
 
 const Register = () => {
     const { createUser, setError, error, upDateProfile  , logOut} = useContext(AuthContext)
+    const navigate = useNavigate()
     const handleEmailSignIn = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -33,7 +34,7 @@ const Register = () => {
                     setError('');
                     form.reset();
                     logOut()
-
+                    navigate('/login')
                 })
                 .catch(error => {
                     setError(error.message)

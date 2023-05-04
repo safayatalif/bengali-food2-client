@@ -8,14 +8,13 @@ const Header = () => {
     const handelLogOut = () => {
         logOut()
             .then(() => {
-                
             })
             .catch(error => {
                 console.log(error)
             })
     }
     return (
-        <div className="navbar bg-gradient-to-r from-violet-500 to-indigo-500 shadow-md px-4 sticky top-0">
+        <div className="navbar bg-gradient-to-r from-violet-500 to-indigo-500 shadow-md px-4">
             <div className="flex-1">
                 <a className="font-bold text-3xl text-indigo-200">Bengali<span className='underline text-orange-500 font-extrabold'>.Food</span></a>
             </div>
