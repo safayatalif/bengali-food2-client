@@ -2,12 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-.program-card{
-    @apply py-4 px-3 border object-fill flex bg-gradient-to-r from-violet-500 to-indigo-500 rounded-lg shadow-lg justify-between p-4  hover:-translate-y-6 duration-1000
+.program-card {
+    @apply py-4 px-3 border object-fill flex bg-gradient-to-r from-violet-500 to-indigo-500 rounded-lg shadow-lg justify-between p-4 hover:-translate-y-6 duration-1000
 }
-.bangraoud-color{
+
+.bangraoud-color {
     @apply bg-gradient-to-r from-violet-400 to-indigo-400
 }
-.my-btn{
+
+.my-btn {
     @apply text-indigo-200 bg-orange-600 border px-4 py-2 rounded-md shadow-lg hover:bg-violet-500
+}
+
+.my-card {
+    @apply border rounded-md px-2 md:px-6 py-3 bg-hero text-violet-200
 }
