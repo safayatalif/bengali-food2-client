@@ -1,32 +1,29 @@
 import React, { useContext } from 'react';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaExclamationTriangle, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 
 const Login = () => {
-    const { googleSignIn, githubSignIn, signIn } = useContext(AuthContext);
+    const { googleSignIn, githubSignIn, signIn , error , setError } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation()
-    const from = location?.state?.from?.pathname || '/'
-
+    const from = location?.state?.from?.pathname || '/';
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
-                console.log(user)
             })
             .catch(error => {
-                console.log(error)
+                setError(error.message)
             })
     }
     const handleGithubSignIn = () => {
         githubSignIn()
             .then(result => {
                 const user = result.user;
-                console.log(user)
             })
             .catch(error => {
-                console.log(error)
+                setError(error.message)
             })
     }
     const handelLogIn = event => {
@@ -39,11 +36,10 @@ const Login = () => {
                 const user = result.user;
                 form.reset()
                 navigate(from, { replace: true })
-                console.log(user)
-                console.log('done')
+                setError('')
             })
             .catch(error => {
-                console.log(error)
+                setError(error.message)
             })
     }
 
@@ -77,6 +73,11 @@ const Login = () => {
                 </div>
                 <label className="">
                     <span className='text-indigo-200'>Don&apos;t Have An Account ? <Link to='/register' className=" link text-indigo-200">Register</Link></span>
+                </label>
+                <label className="">
+                    {
+                        error && <span className='text-red-500'><FaExclamationTriangle className='inline-block'></FaExclamationTriangle> {error}</span>
+                    }
                 </label>
 
             </form>

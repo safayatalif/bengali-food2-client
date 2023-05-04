@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
+import { FaExclamationTriangle } from 'react-icons/fa';
 
 const Register = () => {
-    const { createUser, upDateProfile } = useContext(AuthContext)
+    const { createUser, upDateProfile, setError, error } = useContext(AuthContext)
     const handleEmailSignIn = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -11,24 +12,32 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        createUser(email, password)
-            .then(result => {
-                const user = result.user;
-                form.reset();
-                console.log(user)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        upDateProfile(name, photoURL)
-            .then(result => {
-                const user = result.user;
-                form.reset();
-                console.log(user)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        if (!/^.{6,}$/.test(password)) {
+            return setError('password is less than 6 characters')
+        }
+        if (!password , !email){
+            return setError('cannot submit empty email and password')
+        }
+        else {
+            createUser(email, password)
+                .then(result => {
+                    const user = result.user;
+                    form.reset();
+                    setError('');
+                })
+                .catch(error => {
+                    setError(error.message)
+                })
+            upDateProfile(name, photoURL)
+                .then(result => {
+                    const user = result.user;
+                    form.reset();
+                })
+                .catch(error => {
+                    console.log(error)
+                    setError(error.message)
+                })
+        }
     }
     return (
         <div className='bangraoud-color py-12'>
@@ -50,7 +59,7 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text  text-indigo-200">Email</span>
                     </label>
-                    <input name='email' required type="text" placeholder="email" className="input input-bordered" />
+                    <input name='email'  type="text" placeholder="email" className="input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label className="label">
@@ -63,6 +72,11 @@ const Register = () => {
                 </div>
                 <label className="">
                     <span className='text-indigo-200'>Already Have An Account ? <Link to='/login' className=" link text-indigo-200">Login</Link></span>
+                </label>
+                <label className="">
+                    {
+                        error && <span className='text-red-500'><FaExclamationTriangle className='inline-block'></FaExclamationTriangle> {error}</span>
+                    }
                 </label>
             </form>
         </div>

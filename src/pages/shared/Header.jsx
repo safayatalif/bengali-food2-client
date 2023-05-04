@@ -8,7 +8,7 @@ const Header = () => {
     const handelLogOut = () => {
         logOut()
             .then(() => {
-                console.log('logout')
+                
             })
             .catch(error => {
                 console.log(error)
