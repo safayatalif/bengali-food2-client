@@ -13,6 +13,7 @@ const githubProvider = new GithubAuthProvider();
 const AuthProviders = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isLoading , setIsLoading] = useState(true)
     const [error , setError ] = useState(null)
     const googleSignIn = () => {
         setLoading(true)
@@ -55,7 +56,10 @@ const AuthProviders = ({ children }) => {
         upDateProfile,
         loading,
         setError,
-        error
+        error,
+        isLoading,
+        setIsLoading
+
     }
     return (
         <AuthContext.Provider value={authInfo}>
