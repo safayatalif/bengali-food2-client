@@ -16,7 +16,7 @@ const ChefDetails = () => {
                         <p><span className='font-semibold'>Description :</span> {description}</p>
                         <p><span className='font-semibold'>Recipes :</span> {number_of_recipes} Item</p>
                         <p><span className='font-semibold'>Experience</span> : {years_of_experience} Year</p>
-                        <p><span className='font-semibold'>Link </span> : {likes} <FaHeart className='inline-block text-orange-600'></FaHeart></p>
+                        <p><span className='font-semibold'>Like </span> : {likes} <FaHeart className='inline-block text-orange-600'></FaHeart></p>
                         <div className="card-actions justify-end">
                             <Link to="/">
                                 <button className="text-bold text-indigo-200 bg-orange-600 border px-4 py-2 rounded-md shadow-lg hover:bg-violet-500">
