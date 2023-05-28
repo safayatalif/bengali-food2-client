@@ -19,7 +19,7 @@ const ChefCard = ({ chef }) => {
                 <h2 className="card-title underline">{chef_name}</h2>
                 <p><span className='font-semibold'>Recipes :</span> {number_of_recipes} Item</p>
                 <p><span className='font-semibold'>Experience</span> : {years_of_experience} Year</p>
-                <p><span className='font-semibold'>Link </span> : {likes} <FaHeart className='inline-block text-orange-600'></FaHeart></p>
+                <p><span className='font-semibold'>Likes </span> : {likes} <FaHeart className='inline-block text-orange-600'></FaHeart></p>
                 <div className="card-actions justify-end">
                     <Link to={`${id}`}>
                         <button className="my-btn">
